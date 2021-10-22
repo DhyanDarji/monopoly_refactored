@@ -12,8 +12,8 @@ Player::Player()
     properties_owned[20];
 }
 
-Player::~Player() {
-
+Player::~Player()
+{
 }
 
 Player::Player(string Name, int num)
@@ -30,7 +30,6 @@ Player::Player(string Name, int num)
 }
 
 // void Player::InJail() {
-
 
 // }
 int Player::get_number()
@@ -58,11 +57,12 @@ int Player::get_previous_position()
     return previous_position;
 }
 //we should pass through the tiles array in this function to access other classes
-void Player::set_position(vector<Tile*>& tiles)
+void Player::set_position(vector<Tile *> &tiles)
 {
 
     //checks if player is in jail and skips the opportunity to make a move and be a free bird!
-    if (in_jail == true) {
+    if (in_jail == true)
+    {
         cout << "Tough luck buddy, you are in jail! Either pay the 400 dollar bail or take a 1/6 chance to escape via a dice roll" << endl;
         return;
     }
@@ -89,19 +89,18 @@ void Player::set_position(vector<Tile*>& tiles)
         //start literally does nothing so it's find to just use this if statment here to simulate the start
     }
 
-    //we also want to call the relevant objects to ther classes 
+    //we also want to call the relevant objects to ther classes
     // if(position == 5){
     //     tiles[5]->in_jail();
     // }
 
-      // if(position == 10){
+    // if(position == 10){
     //     chance[10]->active_card();
     // }
 
-      // if(position == 15){
+    // if(position == 15){
     //     tiles[15]->go_to_jail();
     // }
-
 }
 
 //this line of code is redundant because we can access variables like such: player_object.position = position variable for that object
@@ -121,8 +120,6 @@ void Player::change_balance(int balance)
 {
     //no need to add symbol as parameter can take either positive or negative balance e.g: change_balance(int -100) would withdraw 100 from user balance
     playerBalance += balance;
-
-
 }
 
 // function to return balance

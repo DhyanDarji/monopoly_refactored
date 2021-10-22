@@ -7,7 +7,6 @@
 #include <vector>
 #include <iostream>
 
-
 using namespace std;
 
 //as Property inherets tile we can go property->tile_method() and it should be able to access all the features of the tile
@@ -24,32 +23,32 @@ Board::Board()
     //AdelaideUni-> do_something
 
     //this needs to be tile now
-   // Tile* p1 = new Tile("Start", 0, 0, 0);
+    // Tile* p1 = new Tile("Start", 0, 0, 0);
 
-    Tile* p1 = new Start("Start");
+    Tile *p1 = new Start("Start");
     //these remain properties because they are properties
-    Tile* p2 = new Property("Adelaide Uni", 200, 40, 1);
-    Tile* p3 = new Property("Flinders Uni", 150, 20, 2);
-    Tile* p4 = new Property("UNISA", 155, 22.5, 3);
-    Tile* p5 = new Property("TAFE", 160, 25, 4);
+    Tile *p2 = new Property("Adelaide Uni", 200, 40, 1);
+    Tile *p3 = new Property("Flinders Uni", 150, 20, 2);
+    Tile *p4 = new Property("UNISA", 155, 22.5, 3);
+    Tile *p5 = new Property("TAFE", 160, 25, 4);
     //Jail* p16 = new Jail("jail", 0, 0, 165);
-    Tile* p6 = new Jail("Jail");
-    Tile* p7 = new Property("Mount Lofty", 250, 50, 6);
-    Tile* p8 = new Property("Mount Osmond", 225, 45, 7);
-    Tile* p9 = new Property("Morialta Falls", 230, 46.5, 8);
-    Tile* p10 = new Property("Linear Park Trail", 245, 47, 9);
-    Tile* p11 = new Property("Chance", 0, 0, 10);
-    Tile* p12 = new Property("Burnside Village", 225, 45, 11);
-    Tile* p13 = new Property("Norwood Parade", 185, 30, 12);
-    Tile* p14 = new Property("Rundel Mall", 300, 70, 13);
-    Tile* p15 = new Property("Tea Tree Plaza", 280, 60, 14);
+    Tile *p6 = new Jail("Jail");
+    Tile *p7 = new Property("Mount Lofty", 250, 50, 6);
+    Tile *p8 = new Property("Mount Osmond", 225, 45, 7);
+    Tile *p9 = new Property("Morialta Falls", 230, 46.5, 8);
+    Tile *p10 = new Property("Linear Park Trail", 245, 47, 9);
+    Tile *p11 = new Property("Chance", 0, 0, 10);
+    Tile *p12 = new Property("Burnside Village", 225, 45, 11);
+    Tile *p13 = new Property("Norwood Parade", 185, 30, 12);
+    Tile *p14 = new Property("Rundel Mall", 300, 70, 13);
+    Tile *p15 = new Property("Tea Tree Plaza", 280, 60, 14);
     //this should be part of the jail class
     //Jail* p16 = new Jail("go to jail", 0, 0, 165);
-    Tile* p16 = new Jail("Go to jail");
-    Tile* p17 = new Property("RAH Hospital", 380, 80, 16);
-    Tile* p18 = new Property("Adelaide Oval", 400, 70, 17);
-    Tile* p19 = new Property("St Bernards", 420, 50, 18);
-    Tile* p20 = new Property("Hindley club", 420, 50, 18);
+    Tile *p16 = new Jail("Go to jail");
+    Tile *p17 = new Property("RAH Hospital", 380, 80, 16);
+    Tile *p18 = new Property("Adelaide Oval", 400, 70, 17);
+    Tile *p19 = new Property("St Bernards", 420, 50, 18);
+    Tile *p20 = new Property("Hindley club", 420, 50, 18);
 
     tiles.push_back(p1);
     tiles.push_back(p2);
@@ -90,21 +89,20 @@ Board::Board()
     // properties.push_back(StBernards);
     // we actually need to pass this property array into other functions for it to be used
     //cout << "default constructor called" << endl;
-
 }
 // sets user position on gameboard by modifying array
 // we could later integrate this function elsewhere with set_position() in player class
 
 //most of the main classes are being moved into the gameboard classes
 
-Board::~Board() {
+Board::~Board()
+{
 
     cout << "Game has ended!" << endl;
-
 }
 
-
-void Board::make_move(Player* players) {
+void Board::make_move(Player *players)
+{
     int game_conclude = 0;
     int control;
 
@@ -117,8 +115,8 @@ void Board::make_move(Player* players) {
             cout << "1: Roll Dice " << endl;
             cout << "2: End Game " << endl;
 
-
-            while (!(cin >> control)) {
+            while (!(cin >> control))
+            {
 
                 cin.clear(); //clears input
                 //ignoires everything up to a \n until we reach a new l ine
@@ -140,29 +138,25 @@ void Board::make_move(Player* players) {
 
             set_user_pos(players[i]);
 
-
             Display_Board();
             //temporary fix to stop user from buying jail or start
 
             //we need to have an if statement to account for the other classes
-            if (players[i].get_position() == 15) {
+            if (players[i].get_position() == 15)
+            {
                 tiles[15]->goToJail(&players[i]);
                 tiles[players[i].get_position()]->onTile(players, i, player_count);
             }
-            else {
+            else
+            {
                 tiles[players[i].get_position()]->onTile(players, i, player_count);
-
             }
-
-
-
-
         }
-
     }
 }
 
-void Board::set_user_pos(Player player) {
+void Board::set_user_pos(Player player)
+{
     // changing old position
     int prev_pos = player.get_previous_position();
     (*user_pos)[prev_pos] = "";
@@ -195,7 +189,8 @@ void Board::set_user_pos(Player player) {
     }
 };
 
-void Board::Display_Board() {
+void Board::Display_Board()
+{
 
     cout << " ===========================================================================================================================================" << endl;
     cout << " |  ";
@@ -219,11 +214,11 @@ void Board::Display_Board() {
         // we add numbers for formatting. They seem random but they actually correspond to the amount of spaces needed for the properties to line up.
 
         cout << " |  " << setw(20) << tiles[19 - i]->get_name() << "|"
-            << setw(92) << ""
-            << "| " << setw(20) << tiles[i + 6]->get_name() << "|" << endl;
+             << setw(92) << ""
+             << "| " << setw(20) << tiles[i + 6]->get_name() << "|" << endl;
         cout << " |  " << setw(20) << (*user_pos)[19 - i] << "|"
-            << setw(92) << ""
-            << "| " << setw(20) << (*user_pos)[i + 6] << "|  " << endl;
+             << setw(92) << ""
+             << "| " << setw(20) << (*user_pos)[i + 6] << "|  " << endl;
         if (i == 3)
         {
             cout << " ===========================================================================================================================================" << endl;

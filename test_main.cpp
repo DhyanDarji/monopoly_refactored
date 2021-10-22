@@ -35,13 +35,14 @@ int main()
     Board adelaide_monopoly;
 
     //==testing player class==
-    p1.set_position();
+
+    p1.set_position(adelaide_monopoly.tiles);
     //rolls dice no expected output you rolled a number: range(1-12), actual: you rolled a number: 8
 
     p1.change_balance(200);
     //expected to add 200 dollars to account
     //no expected output as function does not print. should add 200 dollars to the player balance
-    p1.InJail();
+    //p1.InJail();
     p1.get_number();
     p1.aquire_property("property name");
     //expected to add property name to array;
@@ -50,7 +51,7 @@ int main()
     //expected: 0 (previous position)
     cout << p1.get_previous_position() << endl;
     //expected: 0 as previous position was start
-    p1.set_position();
+    p1.set_position(adelaide_monopoly.tiles);
     cout << p1.get_position() << endl;
     //expected: random number range(1,8), actual =
     cout << p1.get_name() << endl;
@@ -59,12 +60,13 @@ int main()
     cout << p1.get_balance() << endl;
     //expected: player funds: 1700
     //changing position yet again
-    p1.set_position();
+    p1.set_position(adelaide_monopoly.tiles);
     //checking if previous position is traced
     cout << "previous position is: " << p1.get_previous_position() << endl;
     //now making a roll for the p2 player
-    p2.set_position();
-
+    p2.set_position(adelaide_monopoly.tiles);
+    adelaide_monopoly.set_user_pos(p1);
+    adelaide_monopoly.set_user_pos(p2);
     //==testing gameboard class==
     //displaying board initially
     cout << "displaying board:" << endl;
