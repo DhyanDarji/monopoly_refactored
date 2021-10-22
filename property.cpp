@@ -189,6 +189,7 @@ void Property::onTile(Player* players, int i, int playercount) {
         //calling house class here and creating a house object which increases rent;
         cout << "you already own this property!" << endl;
         cout << "type 'BUY' to buy a house/hotel or type 'SELL' to sell property/house/hotel otherwise press enter to continue" << endl;
+
         string sell;
 
         cin.clear(); //clears input
@@ -196,6 +197,22 @@ void Property::onTile(Player* players, int i, int playercount) {
         cin.ignore(256, '\n');
 
         getline(cin, sell);
+
+        while (sell != "SELL" && sell != "BUY") {
+
+            cout << "Invalid input!" << endl;
+            cout << "type 'BUY' to buy a house/hotel or type 'SELL' to sell property/house/hotel otherwise press 1 to continue" << endl;
+
+            cin.clear(); //clears input
+
+            cin.ignore(256, '\n');
+
+            getline(cin, sell);
+
+        }
+
+
+
         if (sell == "SELL") {
 
             cout << "Do you want to sell your property, house or hotel?" << endl;
@@ -210,7 +227,7 @@ void Property::onTile(Player* players, int i, int playercount) {
 
             getline(cin, check);
 
-            while (check != "PROPERTY" || check != "HOUSE" || check != "HOTEL" || check[0] != '\n') {
+            while (check != "PROPERTY" && check != "HOUSE" && check != "HOTEL" && check[0] != '1') {
 
                 // cin.clear();
 
@@ -220,7 +237,7 @@ void Property::onTile(Player* players, int i, int playercount) {
 
                 cout << "type 'PROPERTY' to sell property, 'HOUSE' to sell house and 'HOTEL' to sell hotel" << endl;
 
-                cout << "Hit enter to exit" << endl;
+                cout << "Hit 1 to exit" << endl;
 
                 getline(cin, check);
 
@@ -258,7 +275,7 @@ void Property::onTile(Player* players, int i, int playercount) {
         if (sell == "BUY") {
 
             string buy;
-            cout << "Type 'HOUSE' to buy a house, 'HOTEL' to buy a hotel or enter to exit" << endl;
+            cout << "Type 'HOUSE' to buy a house, 'HOTEL' to buy a hotel or 1 to exit" << endl;
 
             cin.clear(); //clears input
 
@@ -266,11 +283,15 @@ void Property::onTile(Player* players, int i, int playercount) {
 
             getline(cin, buy);
 
-            while (buy != "HOUSE" || buy != "HOTEL" || buy[0] != '\n') {
+            while (buy != "HOUSE" && buy != "HOTEL" && buy[0] != '1') {
 
                 // cin.clear(); //clears input
 
                 // cin.ignore(256, '\n');
+
+                cout << "invalid input!" << endl;
+                cout << "Type 'HOUSE' to buy a house, 'HOTEL' to buy a hotel or enter to exit" << endl;
+
 
                 getline(cin, buy);
 
@@ -288,15 +309,6 @@ void Property::onTile(Player* players, int i, int playercount) {
 
         }
 
-        while (sell != "SELL" || sell != "BUY" || sell[0] != '\n') {
-
-            // cin.clear(); //clears input
-
-            // cin.ignore(256, '\n');
-
-            getline(cin, sell);
-
-        }
 
         return;
 
@@ -463,7 +475,7 @@ void Property::buyHotel(Player* p) {
     if (houseCount != 4) {
         cout << "You cannot buy a hotel if you do not have 4 houses!" << endl;
         cout << "Do you wish to buy a house?" << endl;
-        cout << "'YES to buy a house, enter to return" << endl;
+        cout << "'YES to buy a house, 1 to return" << endl;
         string command;
 
         cin.clear(); //clears input
@@ -472,7 +484,7 @@ void Property::buyHotel(Player* p) {
 
         getline(cin, command);
 
-        while (command != "YES" || command[0] != '\n') {
+        while (command != "YES" && command[0] != '1') {
 
             // cin.clear(); //clears input
 
@@ -481,7 +493,7 @@ void Property::buyHotel(Player* p) {
             cout << "Invalid entry" << endl;
 
             cout << "Do you wish to buy a house?" << endl;
-            cout << "'YES to buy a house, enter to return" << endl;
+            cout << "'YES to buy a house, 1 to return" << endl;
 
             getline(cin, command);
 

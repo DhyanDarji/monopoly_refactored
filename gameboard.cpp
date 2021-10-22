@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <chrono>
+#include <thread>
 
 
 using namespace std;
@@ -110,6 +112,7 @@ void Board::make_move(Player* players) {
 
     while (game_conclude != player_count)
     {
+        system("clear");
         game_conclude = 0;
         for (int i = 0; i < player_count; i++)
         {
@@ -158,6 +161,7 @@ void Board::make_move(Player* players) {
 
 
         }
+        this_thread::sleep_for(chrono::seconds(2));
 
     }
 }
