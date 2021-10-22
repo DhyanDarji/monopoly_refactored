@@ -1,6 +1,7 @@
 #include "tile.h"
 #include "player.h"
 #include <string>
+#include <iostream>
 
 
 
@@ -18,13 +19,23 @@ Tile::Tile(string name) {
 
 }
 
+
+
+
+Tile::~Tile() {
+    cout << tileName << " has been deleted!" << endl;
+}
+
 string Tile::get_name() {
 
     return tileName;
 
 }
 
+void goToJail(Player* player) {
 
-Tile::~Tile() {
-    cout << tileName << " has been deleted!" << endl;
+}
+
+void passStart(Player* player) {
+
 }

@@ -15,5 +15,5 @@ monopoly: main.cpp gameboard.cpp gameboard.h player.cpp player.h property.cpp pr
 	./monopoly
 
 monopoly2: main.cpp gameboard.cpp gameboard.h player.cpp player.h property.cpp property.h property.cpp property.h tile.cpp tile.h jail.cpp jail.h start.cpp start.h
-	g++ main.cpp gameboard.cpp player.cpp  property.cpp tile.cpp start.cpp jail.cpp -std=c++11 -Wall -o monopoly
+	g++ main.cpp gameboard.cpp player.cpp  property.cpp tile.cpp start.cpp jail.cpp -std=c++11 -Wall -v -o monopoly
 	./monopoly 

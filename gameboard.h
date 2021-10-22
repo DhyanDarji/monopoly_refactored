@@ -13,8 +13,8 @@
 #include <iostream>
 using namespace std;
 
-class Player;
 //we need to use forward declaration. This is important due to the order of object calls
+
 class Board
 {
 public:

@@ -3,6 +3,8 @@
 #include "player.h"
 #include "string"
 #include <random>
+#include <iostream>
+
 
 
 using namespace std;

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "player.h"
+#include "tile.h"
 #include <random>
 //this is a cpp 11 feature
 using namespace std;
