@@ -139,12 +139,20 @@ void Board::make_move(Player* players) {
 
             //rolls the dice;
             //dice integrated into set position
-            players[i].set_position(tiles);
+            if (players[i].position == 10) {
+                set_user_pos(players[i]);
+                Display_Board();
 
-            set_user_pos(players[i]);
+            }
+            else {
+                players[i].set_position(tiles);
+
+                set_user_pos(players[i]);
 
 
-            Display_Board();
+                Display_Board();
+            }
+
             //temporary fix to stop user from buying jail or start
 
             //we need to have an if statement to account for the other classes
