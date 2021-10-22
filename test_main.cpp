@@ -6,140 +6,96 @@
 #include "property.h"
 #include "player.h"
 #include <iomanip>
-//added this library for random 
 #include <ctime>
-//#include <ncurses.h>
 using namespace std;
 
-//==game board==
-Board adelaide_monopoly;
+//makefile line
+// test : test_main.cpp gameboard.cpp gameboard.h player.cpp player.h property.cpp property.h property.cpp property.h Tile.cpp Tile.h
+//            clang++ test_main.cpp gameboard.cpp player.cpp property.cpp Tile.cpp -
+//     std = c++ 11 - o test
+//                            ./test
 
 //==player objects==
-Player  p1("p1", 1);
-Player p2("p2", 2);
- 
-// Player* players = new Player[2]; 
-// players[1] = Player("p1", 1); 
 
+// Player* players = new Player[2];
+// players[1] = Player("p1", 1);
 // players[0] = p1; players[1] = p2
 // players[0] = Player("p1", 1);
 // players[1] = Player("p2", 2);
 
 //creating global properties outside of class so that they can be accessed for teting;
-    
 
-int main(void)
+int main()
 {
-    std::vector<Property*> properties;
-    
-    Property* p1 = new Property("Start", 0, 0, 0);
-    //these remain properties because they are properties
-    Property* p2 = new Property("Adelaide Uni", 200, 40, 1);
-    Property* p3 = new Property("Flinders Uni", 150, 20, 2);
-    Property* p4 = new Property("UNISA", 155, 22.5, 3);
-    Property* p5 = new Property("TAFE", 160, 25, 4);
-    //Jail* p16 = new Jail("jail", 0, 0, 165);
-    Property* p6 = new Property("Jail", 0, 200, 5);
-    Property* p7 = new Property("Mount Lofty", 250, 50, 6);
-    Property* p8 = new Property("Mount Osmond", 225, 45, 7);
-    Property* p9 = new Property("Morialta Falls", 230, 46.5, 8);
-    Property* p10 = new Property("Linear Park Trail", 245, 47, 9);
-    Property* p11 = new Property("Chance", 0, 0, 10);
-    Property* p12 = new Property("Burnside Village", 225, 45, 11);
-    Property* p13 = new Property("Norwood Parade", 185, 30, 12);
-    Property* p14 = new Property("Rundel Mall", 300, 70, 13);
-    Property* p15 = new Property("Tea Tree Plaza", 280, 60, 14);
-    //this should be part of the jail class
-    //Jail* p16 = new Jail("go to jail", 0, 0, 165);
-    Property* p16 = new Property("go to jail", 0, 0, 165);
-    Property* p17 = new Property("RAH Hospital", 380, 80, 16);
-    Property* p18 = new Property("Adelaide Oval", 400, 70, 17);
-    Property* p19 = new Property("St Bernards", 420, 50, 18);
-    Property* p20 = new Property("Hindley club", 420, 50, 18);
 
-    properties.push_back(p1);
-    properties.push_back(p2);
-    properties.push_back(p3);
-    properties.push_back(p4);
-    properties.push_back(p5);
-    properties.push_back(p6);
-    properties.push_back(p7);
-    properties.push_back(p8);
-    properties.push_back(p9);
-    properties.push_back(p10);
-    properties.push_back(p11);
-    properties.push_back(p12);
-    properties.push_back(p13);
-    properties.push_back(p14);
-    properties.push_back(p15);
-    properties.push_back(p16);
-    properties.push_back(p17);
-    properties.push_back(p18);
-    properties.push_back(p19);
-    properties.push_back(p20);
-    cout<<"testing board"<<endl;
-   
+    //==testing player objects==
+    Player p1("p1", 1);
+    Player p2("p2", 2);
+    //==game board class test==
+    Board adelaide_monopoly;
 
-    //adelaide_monopoly.set_user_pos(p1);
+    //==testing player class==
+    p1.set_position();
+    //rolls dice no expected output you rolled a number: range(1-12), actual: you rolled a number: 8
 
+    p1.change_balance(200);
+    //expected to add 200 dollars to account
+    //no expected output as function does not print. should add 200 dollars to the player balance
+    p1.InJail();
+    p1.get_number();
+    p1.aquire_property("property name");
+    //expected to add property name to array;
+    //expected: p1 owns: property name
+    p1.show_properties();
+    //expected: 0 (previous position)
+    cout << p1.get_previous_position() << endl;
+    //expected: 0 as previous position was start
+    p1.set_position();
+    cout << p1.get_position() << endl;
+    //expected: random number range(1,8), actual =
+    cout << p1.get_name() << endl;
+    //expected p1, actual = p1
+    cout << "player funds: ";
+    cout << p1.get_balance() << endl;
+    //expected: player funds: 1700
+    //changing position yet again
+    p1.set_position();
+    //checking if previous position is traced
+    cout << "previous position is: " << p1.get_previous_position() << endl;
+    //now making a roll for the p2 player
+    p2.set_position();
 
+    //==testing gameboard class==
+    //displaying board initially
+    cout << "displaying board:" << endl;
+    adelaide_monopoly.Display_Board();
+    //passing through new player positions into the gameboard to output changes
+    adelaide_monopoly.set_user_pos(p1);
+    adelaide_monopoly.set_user_pos(p2);
+    //displaying board to view changes
     adelaide_monopoly.Display_Board();
 
-    //adelaide_monopoly.properties[p1.get_position()]->onProperty(players, 1, 2);
+    //these card objects will go on the gamboard header
 
+    // //Card *card1 = new Card("You got caught stealing from Burnside Village, go to jail!",1,0,5);
+    // Card *card2 = new Card("Adelaide Uni awards you a game design prize foor OOP, collect a $500 dollar prize", 2, 500, 0);
+    // Card *card3 = new Card("You skipped the line at Centerlink, you loose your 200 dollar allowance for passing start", 2, -200, 0);
+    // Card *card4 = new Card("Great state vouchers award you 100 dollars for SA tourism, go have some fun!", 2, 100, 0);
+    // Card *card5 = new Card("You fell asleep on an O-barn bus, whoops your final bus stop is START!", 1, 0, 0);
+    // Card *card6 = new Card("Great state vouchers award you 100 dollars for SA tourism, go have some fun!", 2, 100, 0);
 
-    // //adelaide_monopoly.make_move();
-    // cout << "==testing player functionality==" << endl;
-    // // ==player.cpp==
-    // cout << p1.get_number() << endl;
-    // //expected output = 1; actual == 1
-
-    // p1.aquire_property("Adelaide University");
-    // //expected output = p1 owns the following properties Adelaide University; //expected = P1 owns adelaide university
-    // //p1.aquire_property(.get_name());
-    // //adds property to player object: no expected output
-    // p1.show_properties();
-    // //expected = p1 owns adelaide uni, start ; actual  =  p1 owns adelaide uni, start ;
-
-    // p1.set_position();
-    // //rolls dice no expected output you rolled a number: range(1-12), actual: you rolled a number: 8
-    // cout << p1.get_position() << endl;
-    // //expected: 8, actual = 8
-    // cout << p1.get_name() << endl;
-    // //expected p1, actual = p1
-    // p1.change_balance(200);
-    // //no expedcted output as function does not print. should add 200 dollars to the player balance
-    // cout << "player funds: ";
-    // cout << p1.get_balance() << endl;
-    // //expected: p1 owns 1700; p1 owns 1700;
-
-    // cout << "==testing board functionality==" << endl;
-    // adelaide_monopoly.set_user_pos(p1);
-    // //expected number 2; actual = 2
-    // adelaide_monopoly.Display_Board();
-    // //prints board
-    
-
-    // //==property.cpp==
-    // cout << "==testing property functionality==" << endl;
-    // // AdelaideUni.buy_property(p1);
-    // //Would you like to buy Adelaide University for 200 dollars? yes/no
-    // // input = yes
-    // //output = CONGRATULATIONS p1 now owns Adelaide University purchased for 200 dollars.
-
-    // //input = no
-    // //output = "you chose not to buy this property"
-
-    // //functionality error: player can buy property twice. I will use a bool to stop this from happening
-    // //adelaide_monopoly->*properties[2].set_owner(p1);
-
-    // // AdelaideUni.get_owner();
-    // // AdelaideUni.ontile(p1);
-    // // cout << AdelaideUni.get_name() << endl;
-
-    // // //I might need to use a d
-    // // p1.set_position();
-    // // adelaide_monopoly.set_user_pos(p1);
-    // // //testing to see if player moves subsequently
-    // // adelaide_monopoly.Display_Board();
+    // vector<Card *> cards;
+    // //i can't seem to figure out why cards is an undeclared identifier when it is cleary declared here
+    // cards.push_back(card1);
+    // cards.push_back(card2);
+    // cards.push_back(card3);
+    // cards.push_back(card4);
+    // cards.push_back(card5);
+    // cards.push_back(card6);
+    // //std::srand*(std::time(nullptr)); //set rand seed
+    // int choice = std::rand() % card_count;
+    // //alternative syntax used to flex programming skills XD
+    // //*(cards+choice)->activate_card(Players,adelaide_monopoly,i);
+    // cards[choice]->activate_card(Players, adelaide_monopoly, i);
+    // // Chance.ontile(Players,i,playercount);
 }
