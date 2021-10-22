@@ -290,7 +290,7 @@ void Property::onTile(Player* players, int i, int playercount) {
                 // cin.ignore(256, '\n');
 
                 cout << "invalid input!" << endl;
-                cout << "Type 'HOUSE' to buy a house, 'HOTEL' to buy a hotel or enter to exit" << endl;
+                cout << "Type 'HOUSE' to buy a house, 'HOTEL' to buy a hotel or 'BACK' to exit" << endl;
 
 
                 getline(cin, buy);
