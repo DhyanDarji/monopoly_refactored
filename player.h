@@ -1,8 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-//#include "property.h"
-#include "gameboard.h"
 #include "tile.h"
+#include "gameboard.h"
 #include <string>
 #include <vector>
 #include <ctime>
@@ -36,10 +35,7 @@ public:
     void InJail();
     int get_number();
     //this is a very important function that needs to be called when a player lands on the property
-    void get_properties(vector<Tile*>& tiles) {
-        //we want to pass through Tile objects (or property objedcts and access them)
-
-    };
+    void get_properties(vector<Tile*>& tiles);
     void aquire_property(string name);
     void show_properties();
     int get_previous_position();

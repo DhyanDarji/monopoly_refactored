@@ -1,8 +1,8 @@
-#include "player.h"
 #include <string>
-#include "tile.h"
-#include <string.h>
 #include <algorithm>
+#include "tile.h"
+#include "property.h"
+#include "player.h"
 
 using namespace std;
 // Property default constructor

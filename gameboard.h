@@ -4,10 +4,8 @@
 
 //#include "space.h"
 //#include "move_action.h"
-#include "player.h"
 #include "tile.h"
-#include "property.h"
-#include "jail.h"
+#include "player.h"
 #include <iomanip>
 #include <vector>
 #include <sstream>
@@ -26,8 +24,8 @@ public:
 	//std::vector<Tile*> tiles;
 	//since properties inherets tiles it all should be accessible from
 
-	std::vector<Tile*> tiles;
-	std::vector<string>* user_pos = new vector<string>(20);
+	vector<Tile*> tiles;
+	vector<string>* user_pos = new vector<string>(20);
 	int variable;
 	int player_count;
 	//class methods

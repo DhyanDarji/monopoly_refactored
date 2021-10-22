@@ -9,8 +9,6 @@ using namespace std;
 
 class Player;
 
-class Tile;
-
 
 class Jail : public Tile {
 public:
@@ -19,6 +17,8 @@ public:
     ~Jail();
     void onTile(Player* player, int i, int playercount);
     void goToJail(Player* player);
+
+
 
 
 };

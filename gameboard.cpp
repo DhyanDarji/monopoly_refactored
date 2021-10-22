@@ -1,10 +1,10 @@
-#include <string>
 #include "gameboard.h"
-#include <vector>
+#include "tile.h"
 #include "property.h"
 #include "jail.h"
 #include "start.h"
-#include "tile.h"
+#include <string>
+#include <vector>
 #include <iostream>
 
 

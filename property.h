@@ -2,20 +2,15 @@
 #define PROPERTY_H
 
 #include "tile.h"
-#include "gameboard.h"
 #include "player.h"
-
-
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 class Player;
 
-//class Game_Board;
-//string *properties;
-
-class Property :public Tile {
+class Property : public Tile {
 
 private:
     bool owned;

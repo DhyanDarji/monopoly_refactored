@@ -1,7 +1,7 @@
 #include <string>
+#include "tile.h"
 #include "start.h"
 #include "player.h"
-#include "tile.h"
 
 using namespace std;
 

@@ -10,10 +10,10 @@ test: test_main.cpp gameboard.cpp gameboard.h player.cpp player.h property.cpp p
 
 
 #actual game 
-monopoly: main.cpp gameboard.cpp gameboard.h player.cpp player.h property.cpp property.h property.cpp property.h Tile.cpp Tile.h jail.cpp jail.h start.cpp start.h
-	clang++ main.cpp gameboard.cpp player.cpp  property.cpp Tile.cpp start.cpp jail.cpp -std=c++11 -o monopoly
+monopoly: main.cpp gameboard.cpp gameboard.h player.cpp player.h property.cpp property.h property.cpp property.h tile.cpp tile.h jail.cpp jail.h start.cpp start.h
+	clang++ main.cpp gameboard.cpp player.cpp  property.cpp tile.cpp start.cpp jail.cpp -std=c++11 -o monopoly
 	./monopoly
 
-monopoly2: main.cpp gameboard.cpp gameboard.h player.cpp player.h property.cpp property.h property.cpp property.h Tile.cpp Tile.h jail.cpp jail.h start.cpp start.h
-	g++ main.cpp gameboard.cpp player.cpp  property.cpp Tile.cpp start.cpp jail.cpp -std=c++11 -Wall -o monopoly
+monopoly2: main.cpp gameboard.cpp gameboard.h player.cpp player.h property.cpp property.h property.cpp property.h tile.cpp tile.h jail.cpp jail.h start.cpp start.h
+	g++ main.cpp gameboard.cpp player.cpp  property.cpp tile.cpp start.cpp jail.cpp -std=c++11 -Wall -o monopoly
 	./monopoly 

@@ -1,10 +1,13 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "card.h"
-#include "gameboard.h"
-#include "property.h"
+// #include "card.h"
+// #include "tile.h"
+// #include "gameboard.h"
+// #include "property.h"
+// #include "player.h"
 #include "player.h"
+#include "gameboard.h"
 #include <iomanip>
 //added this library for random 
 #include <ctime>
